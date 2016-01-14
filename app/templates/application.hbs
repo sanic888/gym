@@ -1,4 +1,12 @@
-<div class="header"></div>
+<div class="header">
+	{{#if session.isAuthenticated}}
+		<button {{action 'logout'}}>Logout</button>
+	{{else}}
+		{{#link-to 'login'}}
+			Login
+		{{/link-to}}
+	{{/if}}
+</div>
 <div class="menu">
 	{{#each menuItems as |item|}}
 		<div class="menu-item" {{action "changeState" item.link}}>{{item.text}}</div>

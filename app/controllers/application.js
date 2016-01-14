@@ -1,6 +1,7 @@
 import Ember from 'ember';
 
 export default Ember.Controller.extend({
+	session: Ember.inject.service('session'),
 	menuItems: [{
 			text: 'Profile',
 			link: 'profile'
@@ -12,6 +13,9 @@ export default Ember.Controller.extend({
 			link: 'enter-data'
 	}],
 	actions: {
+		logout: function(){
+			this.get('session').invalidate();
+		},
 		changeState: function(link){
 			this.transitionToRoute(link);
 		}
