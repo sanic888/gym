@@ -8,10 +8,7 @@ export default Ember.Controller.extend({
 		}, {
 			text: 'Graphs',
 			link: 'graphs'
-		}, {
-			text: 'Enter Data',
-			link: 'enter-data'
-	}],
+		}],
 	actions: {
 		logout: function(){
 			this.get('session').invalidate();

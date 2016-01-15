@@ -7,13 +7,15 @@ module.exports = function(defaults) {
     // Add options here
     lessOptions: {
       paths: [
-        '/styles/menu.less'
+        '/styles/menu.less',
+        '/styles/signin.less'
       ]
     },
     outputPaths: {
       app: {
         css: {
-          'menu': '/assets/menu.css'
+          'menu': '/assets/menu.css',
+          'signin': '/assets/signin.css'
         }
       }
     }
