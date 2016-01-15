@@ -8,7 +8,6 @@
 	.menu-item {
 		padding: 10px;
 		cursor: pointer;
-	    border-radius: 10px 0 0 10px;
 
 	    &:hover {
 	        background-color: #D6D6D6;
@@ -18,5 +17,16 @@
 		    -ms-transition: background-color 0.5s ease;
 		    transition: background-color 0.5s ease;
 	    }
+
+	    &.selected {
+	        background-color: #D6D6D6;	    	
+	    }
+	}
+
+	.menu-expand {
+		cursor: pointer;	
+	    text-align: right;
+    	padding: 10px;
+    	background-color: #FDFDFD;
 	}
 }

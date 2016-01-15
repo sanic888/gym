@@ -1,0 +1,13 @@
+<div class="menu-expand" {{action "toggleMenu"}}>
+{{#if expanded}}
+	<span class="glyphicon glyphicon-chevron-left"></span>
+{{else}}
+	<span class="glyphicon glyphicon-chevron-right"></span>
+{{/if}}
+</div>
+
+{{#each menuItems as |item|}}
+	<div class={{item.classNames}} {{action "goTo" item}}>
+		{{item.text}}
+	</div>
+{{/each}}

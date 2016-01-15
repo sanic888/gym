@@ -7,12 +7,13 @@
 		{{/link-to}}
 	{{/if}}
 </div>
+
 <div class="menu">
-	{{#each menuItems as |item|}}
-		<div class="menu-item" {{action "changeState" item.link}}>{{item.text}}</div>
-	{{/each}}
+	{{menu-left goTo='changeState' currentRoute=currentRoute}}
 </div>
 
 <div class="content">
-	{{outlet}}
+	<div class="content-wrapper">
+		{{outlet}}		
+	</div>
 </div>
