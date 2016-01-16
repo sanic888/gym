@@ -1,0 +1,18 @@
+<div>
+	<div class={{login.classNames}} {{action 'selectTab' login.type}}>
+		<h2>{{login.text}}</h2>
+	</div>
+	<div class={{signup.classNames}} {{action 'selectTab' signup.type}}>
+		<h2>{{signup.text}}</h2>
+	</div>
+</div>
+
+{{#if login.selected}}
+	<div>
+		{{login-form}}
+	</div>
+{{else}}
+	<div>
+		{{signup-form}}
+	</div>
+{{/if}}

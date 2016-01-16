@@ -44,6 +44,12 @@ export default Ember.Component.extend({
 		},
 		toggleMenu(){
 			this.toggleProperty('expanded');
+
+			if(this.expanded){
+				this.sendAction('hideMenu');
+			}else {
+				this.sendAction('showMenu');
+			}
 		}
 	}
 });

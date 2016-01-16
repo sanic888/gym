@@ -8,8 +8,8 @@
 	{{/if}}
 </div>
 
-<div class="menu">
-	{{menu-left goTo='changeState' currentRoute=currentRoute}}
+<div class={{menuClasses}}>
+	{{menu-left goTo='changeState' hideMenu='hideMenu' showMenu='showMenu' currentRoute=currentRoute}}
 </div>
 
 <div class="content">
