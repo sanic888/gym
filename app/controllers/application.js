@@ -6,11 +6,8 @@ export default Ember.Controller.extend({
 		this._super.apply(this, arguments);		
 	},
 	menuClasses: 'menu',
-	session: Ember.inject.service('session'),
+	//session: Ember.inject.service('session'),
 	actions: {
-		logout() {
-			this.get('session').invalidate();
-		},
 		changeState(link) {
 			this.transitionToRoute(link);
 		},

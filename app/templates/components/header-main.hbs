@@ -1,0 +1,8 @@
+{{#if session.isAuthenticated}}
+	{{menu-top-right}}
+	<button {{action 'logout'}}>Logout</button>
+{{else}}
+	{{#link-to 'login'}}
+		Login
+	{{/link-to}}
+{{/if}}
