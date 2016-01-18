@@ -20,11 +20,13 @@ export default Ember.Component.extend({
 	menuItems: [{
 			text: 'Profile',
 			link: 'profile',
-			classNames: 'menu-item'
+			classNames: 'menu-item',
+			icon: 'glyphicon glyphicon-user'
 		}, {
 			text: 'Graphs',
 			link: 'graphs',
-			classNames: 'menu-item'
+			classNames: 'menu-item',
+			icon: 'glyphicon glyphicon-stats'
 		}
 	],
 	expanded: true,
@@ -46,9 +48,9 @@ export default Ember.Component.extend({
 			this.toggleProperty('expanded');
 
 			if(this.expanded){
-				this.sendAction('hideMenu');
-			}else {
 				this.sendAction('showMenu');
+			}else {
+				this.sendAction('hideMenu');
 			}
 		}
 	}

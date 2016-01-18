@@ -8,6 +8,7 @@
 
 {{#each menuItems as |item|}}
 	<div class={{item.classNames}} {{action "goTo" item}}>
-		{{item.text}}
+		<i class="{{item.icon}}"></i>&nbsp;
+		<span>{{item.text}}</span>
 	</div>
 {{/each}}
