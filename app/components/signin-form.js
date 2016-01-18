@@ -2,13 +2,13 @@ import Ember from 'ember';
 
 export default Ember.Component.extend({
 	login: {
-		text: 'Login',
+		text: 'Log In',
 		classNames: 'tab-enter selected',
 		type: 'login',
 		selected: true
 	},
 	signup: {
-		text: 'Signup',
+		text: 'Sign Up',
 		classNames: 'tab-enter',
 		type: 'signup',
 		selected: false

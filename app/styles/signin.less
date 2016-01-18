@@ -2,18 +2,48 @@
 	position: absolute;
     top: 0;
     left: 0;
-    background-color: #CCCBCB;
     height: 100%;
     width: 100%;
+    z-index: 100;
+    opacity: 0.4;
+    background-color: silver;
+}
+.signin-background-image{
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background-image: url('images/cosmos.jpg');
+    z-index: 99;
 }
 .signin-form {
-	margin: 0 auto;
-	width: 500px;
-	background-color: #EFEEEE;
-	box-shadow: 5px 5px 10px #3C3B3B;
-    margin-top: 10%;
+    position: absolute;
+    left: 50%;
 
-    form {
-        padding: 10px;
+    .signin-form-center {
+        position: relative;
+        left: -50%;
+        width: 500px;
+        margin-top: 10%;
+        z-index: 999;
+
+        form {
+            padding: 10px;
+        }
+    }
+}
+
+.tab-enter {
+    width: 50%;
+    float: left;
+    cursor: pointer;
+    text-align: center;
+
+    &.selected {
+        color: white;
+    }
+    &:hover {
+        color: white;   
     }
 }
