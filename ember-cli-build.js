@@ -7,17 +7,17 @@ module.exports = function(defaults) {
     // Add options here
     lessOptions: {
       paths: [
-        '/styles/menu.less',
-        '/styles/signin.less',
-        '/styles/menu-top-right.less'
+        //'/styles/menu.less',
+        //'/styles/signin.less',
+        //'/styles/menu-top-right.less'
       ]
     },
     outputPaths: {
       app: {
         css: {
-          'menu': '/assets/menu.css',
-          'signin': '/assets/signin.css',
-          'menu-top-right': '/assets/menu-top-right.css'
+          //'menu': '/assets/menu.css',
+          //'signin': '/assets/signin.css',
+          //'menu-top-right': '/assets/menu-top-right.css'
         }
       }
     }

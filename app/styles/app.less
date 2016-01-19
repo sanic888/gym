@@ -1,3 +1,7 @@
+@import "menu-top-right.less";
+@import "menu.less";
+@import "signin.less";
+
 html {
 	width: 100%;
 	height: 100%;
@@ -30,4 +34,12 @@ body {
 	    box-shadow: 0 0 10px #777777;
 	    padding: 5px 10px;
 	}
+}
+
+.transition-common(@property, @duration, @function, @delay) {
+    -webkit-transition: @property @duration @function @delay;
+    -moz-transition: @property @duration @function @delay;
+    -o-transition: @property @duration @function @delay;
+    -ms-transition: @property @duration @function @delay;
+    transition: @property @duration @function @delay;
 }

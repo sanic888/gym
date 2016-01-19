@@ -1,8 +1,14 @@
-<div class="menu-top-right">
-	Alexander Yancharuk &nbsp;
-	{{#if expanded}}
-		<i class="glyphicon glyphicon-triangle-top"></i>
-	{{else}}
-		<i class="glyphicon glyphicon-triangle-bottom"></i>
-	{{/if}}
+<div class="{{menuClassNames}}">
+	<div {{action 'toggleMenu'}}>
+		Alexander Yancharuk &nbsp;
+		{{#if expanded}}
+			<i class="glyphicon glyphicon-triangle-top"></i>
+		{{else}}
+			<i class="glyphicon glyphicon-triangle-bottom"></i>
+		{{/if}}
+	</div>
+	{{#link-to 'profile'}}
+		<div>Profile</div>
+	{{/link-to}}
+	<div {{action 'logout'}}>Log Out</div>
 </div>

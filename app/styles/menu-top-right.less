@@ -3,4 +3,25 @@
     position: absolute;
     right: 10px;
     top: 10px;
+    background-color: #E8E8E8;
+    padding: 5px;
+    height: 20px;
+    overflow: hidden;
+    cursor: pointer;
+
+    .transition-common(height, 0.3s, ease, 0s);
+
+    &.expanded {
+    	height: 70px;
+    }
+
+    a {
+	    color: black;
+    	text-decoration: none;
+
+    	&:hover {
+		    color: black;
+	    	text-decoration: none;    		
+    	}
+    }
 }
