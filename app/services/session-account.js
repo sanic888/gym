@@ -8,15 +8,19 @@ export default Ember.Service.extend({
 
 	loadCurrentUser() {
 		return new RSVP.Promise((resolve, reject) => {
-			const accountId = this.get('session.data.authenticated.account_id');
-			if (!Ember.isEmpty(accountId)) {
-				return this.get('store').find('account', accountId).then((account) => {
-					this.set('account', account);
+			var self = this;
+
+			setTimeout(function(){
+				const accountId = self.get('session.data.authenticated.account_id');
+				if (!Ember.isEmpty(accountId)) {
+					return self.get('store').find('account', accountId).then((account) => {
+						self.set('account', account);
+						resolve();
+					}, reject);
+				}else {
 					resolve();
-				}, reject);
-			}else {
-				resolve();
-			}
+				}
+			}, 1000);
 		});
 	}
 });
