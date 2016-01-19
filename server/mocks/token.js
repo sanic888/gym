@@ -1,13 +1,6 @@
 module.exports = function(app) {
 	var express     = require('express');
 	var tokenRouter = express.Router();
-	var session = require('express-session');
-
-	app.use(session({
-		secret: 'HDjhs&*&@782hj3jОГ',
-		resave: true,
-		saveUninitialized: true,
-	}));
 
 	tokenRouter.post('/token', function(req, res) {
 		if (req.body.grant_type === 'password' && req.body.username && req.body.password) {
