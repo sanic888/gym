@@ -1,9 +1,12 @@
 import Ember from 'ember';
 
 export default Ember.Component.extend({
+	eventEmitter: Ember.inject.service('event-emitter'),
+	test1: Ember.inject.service('test1'),
 	init() {
 		this._initMenu();
 		this._super.apply(this, arguments);
+
 	},
 	_initMenu(){
 		var menuItems = this.get('menuItems');
@@ -52,6 +55,9 @@ export default Ember.Component.extend({
 			}else {
 				this.sendAction('hideMenu');
 			}
+
+
+			this.get('test1').test();
 		}
 	}
 });
