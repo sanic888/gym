@@ -7,8 +7,6 @@
 			<i class="glyphicon glyphicon-triangle-bottom"></i>
 		{{/if}}
 	</div>
-	{{#link-to 'profile'}}
-		<div>Profile</div>
-	{{/link-to}}
+	<div {{action 'goTo' 'profile'}}>Profile</div>
 	<div {{action 'logout'}}>Log Out</div>
 </div>

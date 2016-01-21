@@ -2,6 +2,7 @@ import Ember from 'ember';
 
 export default Ember.Component.extend({
 	session: Ember.inject.service('session'),
+	eventEmitter: Ember.inject.service('event-emitter'),
 	menuClassNames: 'menu-top-right',
 	expanded: false,
 	actions: {
@@ -16,6 +17,9 @@ export default Ember.Component.extend({
 			}else {
 				this.set('menuClassNames', 'menu-top-right');
 			}
+		},
+		goTo(link){
+			this.get('eventEmitter').emit('menu-left:goto', link);
 		}
 	}
 });
