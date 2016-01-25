@@ -4,6 +4,12 @@ module.exports.signin = function(req, res){
 
 module.exports.token = function(req, res){
     if (req.body.grant_type === 'password' && req.body.username && req.body.password) {
+        authService.signin(req, res, "/", function (error) {
+            var errorResponse = new ErrorResponse()
+            errorResponse.addError('password', error);
+            return res.status(400).send(errorResponse);
+        });
+		
 		var session = req.session;
 
 		session.authorized = true;

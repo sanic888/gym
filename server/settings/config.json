@@ -1,0 +1,10 @@
+{
+  "port": 8091,
+  "mongo": {
+    "read": "mongodb://localhost:27017/dev-gym-read",
+    "session": "mongodb://localhost:27017/dev-gym-session"
+  },
+  "secrets": {
+    "session": "HDjhs&*&@782hj3jОГ"
+  }
+}
