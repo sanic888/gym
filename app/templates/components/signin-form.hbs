@@ -1,4 +1,4 @@
-<form {{action 'authenticateWithOAuth2' on='submit'}}>
+<div>
 	<div class="form-group">
 		{{input value=identification placeholder='Login...' class='form-control'}}
 	</div>
@@ -7,8 +7,8 @@
 		{{input value=password placeholder='Password...' class='form-control' type='password'}}
 	</div>
 
-	<button type="submit" class="btn btn-success form-control">Log In</button>
-</form>
+	<button class="btn btn-success form-control" {{action 'authenticateWithOAuth2'}}>Log In</button>
+</div>
 {{#if errorMessage}}
 	<div class="alert alert-danger">
 		<p>

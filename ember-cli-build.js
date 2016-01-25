@@ -23,7 +23,6 @@ module.exports = function(defaults) {
     }
   });
 
-  app.import('bower_components/tiny-emitter/dist/tinyemitter.js');
   app.import('bower_components/bootstrap/dist/css/bootstrap.css');
   app.import('bower_components/bootstrap/dist/fonts/glyphicons-halflings-regular.woff', {
     destDir: 'fonts'

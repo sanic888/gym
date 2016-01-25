@@ -1,7 +1,6 @@
 module.exports = function(app) {
-	var globSync   = require('glob').sync;
+	var api = require('glob').sync('./mocks/**/*.js', { cwd: __dirname }).map(require);
 	var bodyParser = require('body-parser');
-	var mocks      = globSync('./mocks/**/*.js', { cwd: __dirname }).map(require);
 	var session = require('express-session');
 
 	app.use(session({
@@ -18,5 +17,7 @@ module.exports = function(app) {
 	var morgan  = require('morgan');
 	app.use(morgan('dev'));
 
-	mocks.forEach(function(route) { route(app); });
+	api.forEach(function(route) {
+		route(app); 
+	});
 };
