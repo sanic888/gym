@@ -1,3 +1,5 @@
+var authService = require('./../../infrastructure/auth.js');
+
 module.exports.signin = function(req, res){
     res.status(200).send({status: true, message: 'hello'});
 }
@@ -5,18 +7,21 @@ module.exports.signin = function(req, res){
 module.exports.token = function(req, res){
     if (req.body.grant_type === 'password' && req.body.username && req.body.password) {
         authService.signin(req, res, "/", function (error) {
-            var errorResponse = new ErrorResponse()
-            errorResponse.addError('password', error);
-            return res.status(400).send(errorResponse);
+            // var errorResponse = new ErrorResponse()
+            // errorResponse.addError('password', error);
+            // return res.status(400).send(errorResponse);
+
+            
+            return res.status(400).send(error);
         });
 		
-		var session = req.session;
+		// var session = req.session;
 
-		session.authorized = true;
-		session.email = req.body.username;
-		session.password = req.body.password;
+		// session.authorized = true;
+		// session.email = req.body.username;
+		// session.password = req.body.password;
 
-		res.status(200).send('{ "access_token": "secret token!", "account_id": 1 }');
+		// res.status(200).send('{ "access_token": "secret token!", "account_id": 1 }');
 	}else {
 		res.status(400).send('{ "error": "invalid" }');
 	}

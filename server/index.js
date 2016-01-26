@@ -1,8 +1,9 @@
 module.exports = function(app) {
-	var api = require('glob').sync('./mocks/**/*.js', { cwd: __dirname }).map(require);
+	var glob = require('glob').sync; 
+	var api = glob('./api/**/router.js', { cwd: __dirname }).map(require);
 	var bodyParser = require('body-parser');
 	var session = require('express-session');
-	var MongoStore = require('connect-mongo')(session);
+	var MongoStore = require('connect-mongo/es5')(session);
 	var passport = require('./infrastructure/passport.js');
 	var config = require('./config.js');
 
