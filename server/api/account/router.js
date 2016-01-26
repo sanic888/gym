@@ -25,5 +25,5 @@ module.exports = function(app) {
 	    }
 	});
 
-	app.use('accounts', router)
+	app.use('/accounts', router)
 }

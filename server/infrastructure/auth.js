@@ -106,7 +106,7 @@ auth.signin = function(req, res,successReturnToOrRedirect, next){
         if (err) { return next(err); }
         if (!user) { next("There's no such user or the email or password are typed incorrectly");}
         req.logIn(user, function(err) {
-            if (err) { return next(err); }
+            if (err) { console.log('-----------------------------'); console.dir(err); return next(err); }
             return res.redirect(successReturnToOrRedirect);
         });
 
