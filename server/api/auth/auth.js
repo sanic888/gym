@@ -84,7 +84,7 @@ auth.signin = function(req, res,successReturnToOrRedirect, next){
         if (!user) { next("There's no such user or the email or password are typed incorrectly");}
         req.logIn(user, function(err) {
             if (err) { return next(err); }
-            return res.status(200).send({access_token: user._id, account_id: 1 });
+            return res.status(200).send({access_token: auth.signToken(user._id), account_id: 1 });
             // return res.redirect(successReturnToOrRedirect);
         });
 
