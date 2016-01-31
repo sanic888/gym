@@ -1,4 +1,4 @@
-var authService = require('./../../infrastructure/auth.js');
+var authService = require('./../../api/auth/auth');
 var ErrorResponse = require('./../../infrastructure/apiErrorResponse');
 
 module.exports.signin = function(req, res){
@@ -7,6 +7,8 @@ module.exports.signin = function(req, res){
 
 module.exports.token = function(req, res){
     if (req.body.grant_type === 'password' && req.body.username && req.body.password) {
+    	console.log('-----------------------1---------------------');
+    	
         authService.signin(req, res, "/", function (error) {
             var errorResponse = new ErrorResponse()
             errorResponse.addError('password', error);

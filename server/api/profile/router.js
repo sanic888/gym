@@ -5,29 +5,7 @@ var router = express.Router();
 router.get('/signin', controller.signin);
 router.post('/token', controller.token);
 
-var express = require('express');
-var passport = require('./../../infrastructure/passport');
-var auth = require('./../../infrastructure/auth');
-
-var localRouter = express.Router();
-
-localRouter.post('/', function(req, res, next) {
-	passport.authenticate('local', function (err, user, info) {
-		var error = err || info;
-		if (error) return res.json(401, error);
-		if (!user) return res.json(404, {message: 'Something went wrong, please try again.'});
-
-		var token = auth.signToken(user._id);
-		res.json({token: token});
-	})(req, res, next)
-});
-
-
-module.exports = function(app) {
-	app.use('/', router);
-
-	app.use('/local', localRouter);
-}
+module.exports = router;
 
 // module.exports = function(app) {
 // 	var express = require('express');

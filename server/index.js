@@ -4,8 +4,8 @@ module.exports = function(app) {
 	var bodyParser = require('body-parser');
 	var session = require('express-session');
 	var MongoStore = require('connect-mongo/es5')(session);
-	var passport = require('./infrastructure/passport.js');
-	var config = require('./config.js');
+	var passport = require('./infrastructure/passport');
+	var config = require('./config');
 
 	app.use(session({
 		store: new MongoStore({url: config.mongo.session}),
@@ -21,11 +21,11 @@ module.exports = function(app) {
 	app.use(passport.initialize());
 	app.use(passport.session());
 
-	// Log proxy requests
-	var morgan  = require('morgan');
-	app.use(morgan('dev'));
+	app.use('/accounts', require('./api/account/router'));
+	app.use('/', require('./api/profile/router'));
+	app.use('/auth', require('./api/auth'));
 
-	api.forEach(function(route) {
-		route(app); 
-	});
+	// // Log proxy requests
+	// var morgan  = require('morgan');
+	// app.use(morgan('dev'));
 };

@@ -1,11 +1,11 @@
 'use strict';
 
-var passport = require('./passport');
-var config = require('./../config');
+var passport = require('./../../infrastructure/passport');
+var config = require('./../../config');
 var jwt = require('jsonwebtoken');
 var expressJwt = require('express-jwt');
 var compose = require('composable-middleware');
-var userService = require('./../services/user');
+var userService = require('./../../services/user');
 var validateJwt = expressJwt({ secret: config.secrets.session });
 var _ = require('lodash');
 
@@ -84,7 +84,8 @@ auth.signin = function(req, res,successReturnToOrRedirect, next){
         if (!user) { next("There's no such user or the email or password are typed incorrectly");}
         req.logIn(user, function(err) {
             if (err) { return next(err); }
-            return res.redirect(successReturnToOrRedirect);
+            return res.status(200).send({access_token: user._id, account_id: 1 });
+            // return res.redirect(successReturnToOrRedirect);
         });
 
     })(req, res, next);
