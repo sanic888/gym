@@ -61,8 +61,8 @@ auth.hasRole = function(roleRequired) {
 /**
  * Returns a jwt token signed by the app secret
  */
-auth.signToken = function(id) {
-  return jwt.sign({ _id: id }, config.secrets.session, { expiresInMinutes: 60*5 });
+auth.signToken = function(user) {
+  return jwt.sign(user, config.secrets.session, { expiresInMinutes: 60*5 });
 }
 
 /**
@@ -77,14 +77,12 @@ auth.setTokenCookie = function(req, res) {
 
 
 auth.signin = function(req, res,successReturnToOrRedirect, next){
-      console.log('-----------------------2---------------------');
     passport.authenticate('local',  function(err, user, info) {
-      console.log('-----------------------3---------------------');
         if (err) { return next(err); }
         if (!user) { next("There's no such user or the email or password are typed incorrectly");}
         req.logIn(user, function(err) {
             if (err) { return next(err); }
-            return res.status(200).send({access_token: auth.signToken(user._id), account_id: 1 });
+            return res.status(200).send({access_token: auth.signToken({_id: user._id, email: user.email}), account_id: 1 });
             // return res.redirect(successReturnToOrRedirect);
         });
 
