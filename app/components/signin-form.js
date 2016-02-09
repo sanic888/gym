@@ -5,7 +5,7 @@ const { service } = Ember.inject;
 export default Ember.Component.extend({
 	session: service('session'),
 	keyPress(event) {
-		if (event.which == 13 || event.keyCode == 13) {
+		if (event.which === 13 || event.keyCode === 13) {
 			this._authenticateWithOAuth2();
 		}
 	},
