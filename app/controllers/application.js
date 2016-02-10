@@ -6,7 +6,6 @@ export default Ember.Controller.extend({
 		this._super.apply(this, arguments);		
 	},
 	menuClasses: 'menu',
-	//session: Ember.inject.service('session'),
 	actions: {
 		changeState(link) {
 			this.transitionToRoute(link);

@@ -25,6 +25,7 @@ BaseDataService.prototype.find = function(query){
 BaseDataService.prototype.insert = function(doc){
     return this._perform("insert", doc);
 };
+
 BaseDataService.prototype.save = function(doc){
     var deferred = Q.defer();
     this._col.save(doc, function(err, result, arg2){

@@ -38,6 +38,11 @@ export default Ember.Controller.extend({
 					classNames: 'tab-enter'
 				});
 			}
+		},
+		createUser(_profile) {
+			var profile = this.store.createRecord('profile', _profile);
+
+			profile.save();
 		}
 	}
 });

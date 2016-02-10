@@ -13,3 +13,7 @@ module.exports.getByEmail = function(email){
 module.exports.findByToken = function(token){
 	return userService.find({_id: token});
 };
+
+module.exports.create = function(user){
+	return userService.insert(user);
+};
