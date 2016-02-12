@@ -6,6 +6,7 @@ module.exports = function(app) {
 	var MongoStore = require('connect-mongo/es5')(session);
 	var passport = require('./infrastructure/passport');
 	var config = require('./config');
+	var expressValidator = require('express-validator');
 
 	app.use(session({
 		store: new MongoStore({url: config.mongo.session}),
@@ -17,6 +18,7 @@ module.exports = function(app) {
 	app.use(bodyParser.urlencoded({
 		extended: true
 	}));
+	app.use(expressValidator());
 
 	app.use(passport.initialize());
 	app.use(passport.session());

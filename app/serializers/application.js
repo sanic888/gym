@@ -1,8 +1,14 @@
 import DS from 'ember-data';
-import Ember from 'ember';
 
 export default DS.RESTSerializer.extend({
-	keyForAttribute: function(attr, method) {
+	keyForAttribute: function(attr) {
 		return attr;
+	},
+	modelNameFromPayloadKey: function(payloadKey) {
+		if (payloadKey === 'blog/post') {
+			return this._super(payloadKey.replace('blog/', ''));
+		} else {
+			return this._super(payloadKey);
+		}
 	}
 });
