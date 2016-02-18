@@ -10,6 +10,10 @@ module.exports.getByEmail = function(email){
 	return userService.findOne({email: email});
 };
 
+module.exports.getByEmailOrLogin = function(email, login){
+	return userService.findOne({$or: [{email: email}, {login: login}]});
+};
+
 module.exports.findByToken = function(token){
 	return userService.find({_id: token});
 };

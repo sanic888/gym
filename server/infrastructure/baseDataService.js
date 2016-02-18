@@ -23,7 +23,9 @@ BaseDataService.prototype.find = function(query){
 };
 
 BaseDataService.prototype.insert = function(doc){
-    return this._perform("insert", doc);
+    return this._perform("insert", doc).then(function(data){
+        return data && data.ops && data.ops[0];
+    });
 };
 
 BaseDataService.prototype.save = function(doc){

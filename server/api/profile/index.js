@@ -4,19 +4,25 @@ var validation = require('./validation/validation');
 var error = require('./../../infrastructure/error');
 
 module.exports.createProfile = function(req, res){
-    validation.validate(req).then(function(validation){
-        if(validation.hasErrors()){
-            res.status(422).send({ errors: validation.errors});  
+    // validate
+    validation.validate(req).then(function(result){
+        if(result.error.hasErrors()){
+            res.status(422).send({ errors: result.error.errors});  
         }else {
             userService.create({
-                login: validation.data.login,
-                email: validation.data.email,
-                firstName: validation.data.firstName,
-                lastName: validation.data.lastName
-            }).finally(function(){
-                res.status(201).send({});
+                login: result.data.login,
+                email: result.data.email,
+                firstName: result.data.firstName,
+                lastName: result.data.lastName
+            }).then(function(user){
+                res.status(201).send(user);
+            }).catch(function(e){
+                res.status(400).send({ errors: e });
             });
         }
+    }).catch(function(e){
+        console.dir(e);
+        res.status(400).send({ errors: e });
     });
 };
 
