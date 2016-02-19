@@ -1,5 +1,16 @@
 var nodemailer = require('nodemailer');
 var config = require('./../config');
+var handlebars = require('handlebars-precompiler');
+var path = require('path');
+handlebars.do({
+    templates : ['./server/templates/complete_registration.hbs'],
+    output: './server/infrastructure/templates.js'
+});
+
+
+// console.log(path.normalize(__dirname + './templates.js'));
+// console.log(path.normalize(__dirname));
+
 
 // create reusable transporter object using the default SMTP transport
 var transporter = nodemailer.createTransport({
@@ -16,16 +27,20 @@ var transporter = nodemailer.createTransport({
     from: config.gmail.email
 });
 
-// setup e-mail data with unicode symbols
-var mailOptions = {
-    from: 'Alex sanic888@gmail.com', // sender address
-    to: 'sanic888@gmail.com, ayancharuk@exadel.com', // list of receivers
-    subject: 'Complete Registration ✔', // Subject line
-    html: 'For complete registration' // html body
-};
-
 module.exports.sendRegistrationMessage = function(to){
-	mailOptions.to = ''
+	console.log('--------sendRegistrationMessage---------');
+	var template = require('./templates');
+	console.dir(template);
+	// setup e-mail data with unicode symbols
+	var mailOptions = {
+	    from: 'Alex ' + config.gmail.email, // sender address
+	    to: to,
+	    subject: 'Complete Registration', // Subject line
+	    html: template['complete_registration.hbs'] // html body
+	};
+
+	console.log('--------sendRegistrationMessage111111111---------');
+
 	// send mail with defined transport object
 	transporter.sendMail(mailOptions, function(error, info){
 	    if(error){

@@ -2,6 +2,7 @@ var authService = require('./../../api/auth/auth');
 var userService = require('./../../services/user');
 var validation = require('./validation/validation');
 var error = require('./../../infrastructure/error');
+var mailer = require('./../../infrastructure/mailer');
 
 module.exports.createProfile = function(req, res){
     // validate
@@ -15,6 +16,7 @@ module.exports.createProfile = function(req, res){
                 firstName: result.data.firstName,
                 lastName: result.data.lastName
             }).then(function(user){
+                mailer.sendRegistrationMessage('sanic888@gmail.com');
                 res.status(201).send(user);
             }).catch(function(e){
                 res.status(400).send({ errors: e });
